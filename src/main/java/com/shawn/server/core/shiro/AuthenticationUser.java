@@ -1,6 +1,10 @@
 package com.shawn.server.core.shiro;
 
-public class AuthenticationUser {
+import java.io.Serializable;
+
+public class AuthenticationUser implements Serializable {
+	
+	private static final long serialVersionUID = -6354749619261807240L;
 	private String username;
 	private String password;
 	private String salt;
