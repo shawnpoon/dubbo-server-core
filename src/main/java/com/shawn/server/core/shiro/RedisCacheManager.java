@@ -21,6 +21,10 @@ public class RedisCacheManager implements CacheManager {
 
 	private RedisManager redisManager;
 
+	public RedisCacheManager() {
+		System.out.println("RedisCacheManager init");
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <K, V> Cache<K, V> getCache(String name) throws CacheException {

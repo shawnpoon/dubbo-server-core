@@ -15,7 +15,7 @@ import org.apache.shiro.util.ByteSource;
 public class UserRealm extends AuthorizingRealm {
 
 	private PermissionManager permissionManager;
-	private AccountManager accountManager;
+	private AccountManager<AuthenticationUser> accountManager;
 
 	/**
 	 * 取得权限及认证
@@ -47,7 +47,7 @@ public class UserRealm extends AuthorizingRealm {
 
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(),
 				user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()), getName());
-
+		
 		return authenticationInfo;
 	}
 
@@ -55,7 +55,7 @@ public class UserRealm extends AuthorizingRealm {
 		this.permissionManager = permissionManager;
 	}
 
-	public void setAccountManager(AccountManager accountManager) {
+	public void setAccountManager(AccountManager<AuthenticationUser> accountManager) {
 		this.accountManager = accountManager;
 	}
 
