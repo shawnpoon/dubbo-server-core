@@ -16,4 +16,14 @@ public class ResponseHandler {
 		}
 	}
 
+	public static void output(HttpServletResponse response, String content) {
+		try {
+			response.setContentType(ContentType.JSON);
+			response.getWriter().write(content);
+			response.getWriter().close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
