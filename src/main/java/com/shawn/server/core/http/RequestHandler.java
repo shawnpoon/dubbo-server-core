@@ -53,7 +53,6 @@ public class RequestHandler {
 
 	public static String getIpAddr(HttpServletRequest request) throws UnknownHostException {
 		String ipAddress = null;
-		// ipAddress = this.getRequest().getRemoteAddr();
 		ipAddress = request.getHeader("x-forwarded-for");
 		if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
 			ipAddress = request.getHeader("Proxy-Client-IP");
