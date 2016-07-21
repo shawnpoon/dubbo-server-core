@@ -124,15 +124,9 @@ public class ImageCropUtil {
 	public static void main(String[] args) {
 		String pathIphone6p = "/Users/shawn/Pictures/iphone6p.jpg";
 
-		long begin = System.currentTimeMillis();
-		System.out.println(begin);
-		for (int i = 0; i < 100; i++) {
-			ImageCropCenterSquare(pathIphone6p, "/Users/shawn/Pictures/iphone6p-" + i + ".jpg", 500, 500);
-		}
-		long end = System.currentTimeMillis();
-		System.out.println(end);
-		System.out.println((end - begin) / 1000);
-
+		File file = new File(pathIphone6p);
+		System.out.println(file.getName());
+		
 	}
 
 }
