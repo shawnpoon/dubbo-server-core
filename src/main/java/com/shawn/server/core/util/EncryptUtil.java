@@ -2,13 +2,18 @@ package com.shawn.server.core.util;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -82,9 +87,15 @@ public class EncryptUtil {
 	 * @param content
 	 * @param password
 	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws BadPaddingException
+	 * @throws IllegalBlockSizeException
 	 * @throws Exception
 	 */
-	public static byte[] decryptAES(byte[] content, String password) throws Exception {
+	public static byte[] decryptAES(byte[] content, String password) throws NoSuchAlgorithmException,
+			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 		KeyGenerator kgen = KeyGenerator.getInstance(KEY_AES);
 		kgen.init(128, new SecureRandom(password.getBytes()));
 		SecretKey secretKey = kgen.generateKey();
